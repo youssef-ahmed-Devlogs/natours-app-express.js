@@ -13,15 +13,9 @@ mongoose
     useNewUrlParser: true,
     useCreateIndex: true,
     useFindAndModify: false,
+    useUnifiedTopology: true,
   })
   .then((con) => console.log('DB connection successful!'));
-
-const tourSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    require: true,
-  },
-});
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
