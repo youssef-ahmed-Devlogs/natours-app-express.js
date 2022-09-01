@@ -27,7 +27,6 @@ const tours = JSON.parse(
 // IMPORT DATA INTO DB
 const importData = async () => {
   try {
-    await deleteData();
     await Tour.create(tours);
     console.log('Data successfully loaded!');
   } catch (e) {
