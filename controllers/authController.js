@@ -68,7 +68,6 @@ exports.protect = catchAsync(async (req, res, next) => {
   let token;
 
   // 1)
-
   if (
     req.headers.authorization &&
     req.headers.authorization.startsWith('Bearer')
