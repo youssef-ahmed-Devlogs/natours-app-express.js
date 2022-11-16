@@ -37,7 +37,10 @@ const limiter = rateLimit({
 
 app.use('/api', limiter);
 
+// req.body in api
 app.use(express.json({ limit: '10kb' }));
+// req.body in server-side-render website (form submit)
+app.use(express.urlencoded({ extended: true, limit: '10kb' }));
 app.use(cookieParser());
 
 app.use(mongoSanitize());
@@ -54,13 +57,6 @@ app.use(
     ],
   })
 );
-
-app.use((req, res, next) => {
-  console.log('====================================');
-  console.log(req.cookies);
-  console.log('====================================');
-  next();
-});
 
 app.use('/', viewRouter);
 app.use('/api/v1/tours', tourRouter);
