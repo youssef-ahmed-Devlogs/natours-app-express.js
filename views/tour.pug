@@ -3,7 +3,9 @@ extends base
 include _reviewCard
 
 block append head
-  link(href='/css/mapbox-gl.css' rel='stylesheet')
+  <link href='https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.css' rel='stylesheet' crossorigin="anonymous" />
+  <script src="https://polyfill.io/v3/polyfill.min.js?version=3.52.1&features=fetch" crossorigin="anonymous"></script>
+  
 
 
 mixin overviewBox(label, text, icon)
@@ -85,7 +87,11 @@ block content
       .cta__content
         h2.heading-secondary What are you waiting for?
         p.cta__text= `${tour.duration} days. 1 adventure. Infinite memories. Make it yours today!`
-        button.btn.btn--green.span-all-rows Book tour now!
+        if user 
+          button.btn.btn--green.span-all-rows#book-tour(data-tour-id=`${tour.id}`) Book tour now!
+        else 
+          a.btn.btn--green.span-all-rows(href='/login') Log in to book tour
 
 
 block append scripts
+  <script src='https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.js' crossorigin="anonymous"></script>
