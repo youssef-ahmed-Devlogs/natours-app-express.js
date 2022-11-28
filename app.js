@@ -65,7 +65,7 @@ app.use(
  * this middleware will compress all the text ( json or html ) that is send to the clients
  * only for text not images or other!
  */
-// app.use(compression());
+app.use(compression());
 
 app.use('/', viewRouter);
 app.use('/api/v1/tours', tourRouter);
